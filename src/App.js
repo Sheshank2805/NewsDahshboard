@@ -23,14 +23,13 @@ function App() {
       const response = await axios.get(
         `https://newsapi.org/v2/top-headlines?country=in&apiKey=${API_KEY}`
       );
-      if (response.data.status === "ok") {
+      if (response.status === 200) {
         const fetchedArticles = response.data.articles;
         setArticles(response.data.articles);
         setFilteredArticles(response.data.articles);
         setTotalArticles(fetchedArticles.length);
-      } else {
-        alert("Failed to fetch news");
       }
+      console.log(response);
     } catch (error) {
       alert("Failed to fetch news");
     }
