@@ -9,7 +9,6 @@ function App() {
   const [filteredArticles, setFilteredArticles] = useState([]);
   const [searchTerm, setSearchTerm] = useState("");
   const [currentPage, setCurrentPage] = useState(1);
-  const [selectedArticle, setSelectedArticle] = useState(null);
   const [totalArticles, setTotalArticles] = useState(0);
   const articlesPerPage = 5;
   const API_KEY = "5650d46434314c1f96d629cd4503a2e6";
@@ -29,7 +28,6 @@ function App() {
         setFilteredArticles(response.data.articles);
         setTotalArticles(fetchedArticles.length);
       }
-      console.log(response);
     } catch (error) {
       alert("Failed to fetch news");
     }
@@ -49,10 +47,6 @@ function App() {
     setCurrentPage(pageNumber);
   };
 
-  const handleClick = (article) => {
-    setSelectedArticle(article);
-  };
-
   return (
     <BrowserRouter>
       <div className="App">
@@ -68,17 +62,14 @@ function App() {
                 handleSearch={handleSearch}
                 currentPage={currentPage}
                 paginate={paginate}
-                handleClick={handleClick}
                 articlesPerPage={articlesPerPage}
                 totalArticles={totalArticles}
               />
             }
           />
           <Route
-            path="/news/:id"
-            element={
-              <NewsItem articles={articles} selectedArticle={selectedArticle} />
-            }
+            path="/news/:index"
+            element={<NewsItem articles={articles} />}
           />
         </Routes>
       </div>

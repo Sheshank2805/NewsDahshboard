@@ -14,7 +14,7 @@ const Pagination = ({ articlesPerPage, totalArticles, paginate }) => {
           <li key={number} className="page-item">
             <button
               onClick={() => paginate(number)}
-              className="bg-gray-200 hover:bg-gray-300 px-3 py-1 rounded"
+              className="bg-gray-200 hover:bg-gray-600 px-3 py-1 rounded"
             >
               {number}
             </button>

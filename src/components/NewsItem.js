@@ -1,9 +1,10 @@
 import React from "react";
 import { useParams } from "react-router-dom";
 
-function NewsItem({ articles, selectedArticle }) {
-  const { id } = useParams();
-  const article = articles[id];
+function NewsItem({ articles }) {
+  const { index } = useParams();
+  const articleIndex = parseInt(index, 10);
+  const article = articles[articleIndex];
 
   if (!article) {
     return <div>Loading...</div>;
@@ -26,10 +27,10 @@ function NewsItem({ articles, selectedArticle }) {
         <div className="lg:flex lg:flex-row lg:flex-nowrap h-full">
           {urlToImage && (
             <img
-              className="lg:w-1/3 lg:h-full lg:object-cover w-full"
+              className="lg:w-1/3 lg:h-full lg:object-cover w-full sm:object-cover"
               src={urlToImage}
               alt={title}
-              style={{ maxHeight: "200px" }}
+              style={{ height: "360px" }}
             />
           )}
           <div className="lg:w-2/3 lg:pl-4 h-full bg-gray-300">

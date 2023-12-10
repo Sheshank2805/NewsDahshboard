@@ -1,6 +1,6 @@
 import React from "react";
-import Pagination from "./Pagination";
 import { Link } from "react-router-dom";
+import Pagination from "./Pagination";
 
 function NewsList({
   articles,
@@ -8,7 +8,6 @@ function NewsList({
   handleSearch,
   currentPage,
   paginate,
-  handleClick,
   articlesPerPage,
   totalArticles,
 }) {
@@ -41,11 +40,8 @@ function NewsList({
             className="w-full h-auto rounded-md mb-4"
           />
           <p className="text-gray-700 mb-2">{article.description}</p>
-          <Link to={`/news/${index}`}>
-            <button
-              onClick={() => handleClick(article)}
-              className="mt-2 bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600"
-            >
+          <Link to={`/news/${indexOfFirstArticle + index}`}>
+            <button className="mt-2 bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600">
               Read more
             </button>
           </Link>
